@@ -58,8 +58,12 @@ for i in name:
 #remove guests
 sorry : list = []
 
-
-for i in name:
-    if 
+for idx, guest in enumerate(name):
+    if idx < 3:
+        print(guest)
+    else:
+        delate: str = name.pop(idx)
+        sorry.append(delate)        
+print(sorry)
 
 
