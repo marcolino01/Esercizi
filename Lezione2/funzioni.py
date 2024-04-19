@@ -79,4 +79,22 @@ for i in l4:
 print(diff_cum(l5))
 
 
-      
+
+####stessa funzione pero parto da un altro elemento e non dal primo
+
+def diff_cumfulcro(l6: list[float], index: int) -> float:
+      if -len(l6) <= index < len(l6):
+            fulcro : int = l6.pop(index)
+            for i in l6[1:]:
+                  fulcro-= i
+            return fulcro
+      else:
+           return 42
+
+lista_input : str = input("inserisci i numeri della lista: ")                
+l7 : list[str] = lista_input.split()
+l8 : list[float] = []
+for i in l7:
+      l8.append(float(i))
+print(diff_cumfulcro(l8,2))
+
