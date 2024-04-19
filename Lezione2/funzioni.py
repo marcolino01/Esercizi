@@ -61,5 +61,22 @@ for i in l:
       l1.append(float(i))
 print(median(l1))
 
+
+
+#######funzione per differenza comulativa
+
+def diff_cum(l3: list[float]) -> float:
+      diff : float =l3[0]
+      for i in l3[1:]:
+            diff-= i
+      return diff
+
+lista_input : str = input("inserisci i numeri della lista: ")                
+l4 : list[str] = lista_input.split()
+l5 : list[float] = []
+for i in l4:
+      l5.append(float(i))
+print(diff_cum(l5))
+
+
       
-   
