@@ -195,4 +195,103 @@ for i in anagrafica:
 #Use the newline character (\n) to insert a blank line between each word-meaning
 #pair in your output.
 
-glossary: dict =[{"pop": ""}
+glossary: dict =[{"append()": "adds an element to the end of the list "},
+                 {"insert()": "inserts an element at a specified position"},
+                 {"pop()": "removes the element at a given position and returns it"},
+                 {"sort()": "sorts the list elements on the spot"},
+                 {"reverse()": "reverses the order of the list elements"}]
+
+for i in glossary:
+    for keys,values in i.items():
+        print(f"{keys}: {values}")
+
+
+#6-7. People: Start with the program you wrote for Exercise 6-1. Make two new dictionaries 
+#representing different people, and store all three dictionaries in a list called people.
+#Loop through your list of people. As you loop through the list, print everything you 
+#know about each person.
+
+anagrafica2 : dict = {"nome": "Federica",
+                      "cognome" : "Buccella",
+                      "age": "23",
+                      "city": "Ladispoli",
+                      "numero preferito": "5"}
+anagrafica3 : dict = {"nome": "Tiziano",
+                      "cognome": "Montesano",
+                      "age": "22",
+                      "city": "Ladispoli",
+                      "numero preferito": "8"}
+
+anagrafica.append(anagrafica2)
+print(anagrafica)
+anagrafica.append(anagrafica3)
+print(anagrafica)
+
+#6-8. Pets: Make several dictionaries, where each dictionary represents a different pet. 
+#In each dictionary, include the kind of animal and the owner’s name. Store these 
+#dictionaries in a list called pets. Next, loop through your list and as
+#you do, print everything you know about each pet. 
+
+animals : dict = [{"animal": "cane",
+                  "owner": "Marco"},
+                  {"animal": "gatto",
+                   "owner": "Lorenzo"}]
+animals2 : dict = {"animal" : "tartaruga", 
+                   "owner": "Davide"}
+
+pets : dict = {}
+animals.append(animals2)
+print(animals)
+pets=animals
+print(pets)
+
+
+#6-9. Favorite Places: Make a dictionary called favorite_places. Think of three names 
+#to use as keys in the dictionary, and store one to three favorite places for each person.
+# To make this exercise a bit more interesting, ask some friends to name a few of their 
+#favorite places. Loop through the dictionary, and print each person’s name and their 
+#favorite places.
+
+
+favourite_places : dict = [{"name" : "Marco",
+                            "places": "Roma,Parigi,Napoli"},
+                            {"name" : "Lorenzo",
+                             "places" : "Napoli, New York"}]
+for i in favourite_places:
+    print(f"i posti preferiti di {i['name']} sono {i['places']}")
+
+
+
+#6-10. Favorite Numbers: Modify your program from Exercise 6-2 so each person can have
+#more than one favorite number. Then print each person’s name along 
+#with their favorite numbers.
+
+anagrafica[0]["numero preferito"] = 9, 10
+anagrafica[3]["numero preferito"] = 10, 13
+
+for i in anagrafica:
+    print(f"i numeri preferiti di {i['nome']} sono {i['numero preferito']}")
+
+
+
+#6-11. Cities: Make a dictionary called cities. Use the names of three cities as keys 
+#in your dictionary. Create a dictionary of information about each city and include the 
+#country that the city is in, its approximate population, and one fact about that city. 
+#The keys for each city’s dictionary should be something like country, population, and fact. 
+#Print the name of each city and all of the information you have stored about it.
+
+cities : dict = [{"city": "New York",
+                  "country": "USA",
+                  "population": "8 mln",
+                  "monument": "Statue of Liberty"},
+                  {"city": "Roma",
+                   "country": "Italy",
+                   "population": "2,8 mln",
+                   "monument": "Colosseo"},
+                   {"city": "Paris",
+                    "country": "France",
+                    "popolution": "2,1 mln",
+                    "monument": "Eiffel's Tower"}]
+
+for i in cities:
+    print(f"questi sono i dati di {i['city']} : {i}")
