@@ -1,6 +1,9 @@
 # Marco Di Cicco
 # 18/04/2024
 
+
+
+
 print("Hello World")
 
 #3-4. Guest List: If you could invite anyone, living or deceased, to dinner, who would you invite? Make a list that includes at least three people you’d
@@ -67,3 +70,129 @@ for idx, i in enumerate(name):
 print(sorry)
 
 
+
+#3-8. Seeing the World: Think of at least five places in the world you’d like to visit.
+#• Store the locations in a list. Make sure the list is not in alphabetical order.
+#• Print your list in its original order. Don’t worry about printing the list neatly; just print it as a raw Python list.
+#• Use sorted() to print your list in alphabetical order without modifying the actual list.
+#• Show that your list is still in its original order by printing it.
+#• Use sorted() to print your list in reverse-alphabetical order without changing the order of the original list.
+#• Show that your list is still in its original order by printing it again.
+#• Use reverse()  to change the order of your list. Print the list to show that its order has changed.
+#• Use reverse() to change the order of your list again. Print the list to show it’s back to its original order.
+#• Use sort() to change your list so it’s stored in alphabetical order. Print the list to show that its order has been changed.
+#• Use sort() to change your list so it’s stored in reverse-alphabetical order.
+#Print the list to show that its order has changed.
+
+place : list[str] = ["New York","Malaga","Kenya","Giappone","Norvegia"]
+print(place)
+print(sorted(place))
+print(sorted(place,reverse=True))
+print(place)
+place.reverse()
+print(place)
+place.reverse()
+print(place)
+place.sort()
+print(place)
+place.sort(reverse=True)
+print(place)
+
+
+#3-9. Dinner Guests: Working with one of the programs from Exercises 3, 
+#use len() to print a message indicating the number of people you’re inviting to dinner.
+
+
+message2: str = f"il numero degli invitati a cena è {len(name)}"
+print(f"{message2}")
+
+
+#3-10. Every Function: Think of things you could store in a list. For example, you could make 
+#a list of mountains, rivers, countries, cities, languages, or anything else you’d like. Write 
+#a program that creates a list containing these items and then uses each function introduced 
+#in this chapter at least once.
+
+place : list[str] = ["New York","Malaga","Kenya","Giappone","Norvegia"]
+place.insert(0,"Burundi")
+place.insert(3,"Mozambico")
+place.append("Parigi")
+print(place)
+place.pop(5)
+print(place)
+print(sorted(place))
+print(sorted(place, reverse= True))
+print(place)
+place.sort()
+print(place)
+place.sort()
+print(place)
+place.reverse()
+print(place)
+
+#6-1. Person: Use a dictionary to store information about a person you know. Store their first
+#name, last name, age, and the city in which they live. You should have keys such as 
+#first_name, last_name, age, and city. Print each piece of information stored in your 
+#dictionary.
+
+anagrafica: dict = [{"nome": "Marco",
+                    "cognome": "Di Cicco",
+                    "age": "23",
+                    "city": "Ladispoli"},
+{                   "nome": "Lorenzo",
+                    "cognome": "Peluso",
+                    "age": "22",
+                    "city": "Ladispoli"},
+{                   "nome": "Leonardo",
+                    "cognome": "Servetti",
+                    "age": "23",
+                    "city": "Ladispoli"},
+{                   "nome": "Stefano",
+                    "cognome": "Regano",
+                    "age": "22",
+                    "city": "Monaco"},
+{                   "nome": "Gaia",
+                    "cognome": "Flati",
+                    "age": "23",
+                    "city": "Ladispoli"}
+]
+print(anagrafica)
+print(anagrafica[0].keys())
+print(anagrafica[1].values())
+
+for i in anagrafica:
+    print(i["nome"])
+ 
+for i in anagrafica:
+    print(i["cognome"])
+
+for i in anagrafica:
+    print(i["age"])
+
+for i in anagrafica:
+    print(i["city"])
+
+#6-2. Favorite Numbers: Use a dictionary to store people’s favorite numbers. Think of five 
+#names, and use them as keys in your dictionary. Think of a favorite number for each person, 
+#and store each as a value in your dictionary. Print each person’s name and their favorite 
+#number. For even more fun, poll a few friends and get some actual data for your program.
+anagrafica[0]["numero preferito"]= 9
+anagrafica[1]["numero preferito"]= 22 
+anagrafica[2]["numero preferito"]= 10
+anagrafica[3]["numero preferito"]= 16
+anagrafica[4]["numero preferito"]= 23
+
+
+for i in anagrafica:
+    print(f"{i['nome']} e il numero suo preferito è {i['numero preferito']}")
+
+
+#6-3. Glossary: A Python dictionary can be used to model an actual dictionary. 
+#However, to avoid confusion, let’s call it a glossary.• Think of five programming words 
+#you’ve learned about in the previous chapters. Use these words as the keys in your glossary, 
+#and store their meanings as values.• Print each word and its meaning as neatly formatted 
+#output. You might print the word followed by a colon and then its meaning, or print 
+#the word on one line and then print its meaning indented on a second line. 
+#Use the newline character (\n) to insert a blank line between each word-meaning
+#pair in your output.
+
+glossary: dict =[{"pop": ""}
