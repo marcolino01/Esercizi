@@ -80,4 +80,21 @@ def word_count2(diz: dict) -> dict[str,int]:
 print(word_count2(word_count(s)))
 
 
+"""restituisci True se s è palindroma; altrimenti restituisci False
+e.s. "amo roma" è palindoma"
+"""
+
+s : str = "amo Roma"
+def is_palindroma(s: str) -> bool:
+    s : str = s.lower().replace(" ","")
+    i : int = 0
+    while i < len(s):
+        j = len(s) - (i+1)
+        if s[i] != s[j]:
+            return False
+        i +=1
+    return True
+    
+print(is_palindroma(s))
+
      
