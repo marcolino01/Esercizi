@@ -284,7 +284,7 @@ else:
 
 
 
-#Do the following to create a program that simulates how websites ensure that everyone 
+#5-10 Do the following to create a program that simulates how websites ensure that everyone 
 #has a unique username.
 #• Make a list of five or more usernames called current_users.
 #• Make another list of five usernames called new_users. Make sure one or two of the new 
@@ -297,11 +297,56 @@ else:
 #the lowercase versions of all existing users.)
 current_users : list[str] = ["Marco","Davide","Francesca","Filippo"]
 new_users : list[str] = ["Marco","Lorenzo","Gaia","Filippo"]
-current_users : list[str] = current_users.lower()
-new_users : list[str] = new_users.lower()
-for i in new_users:
-    if i[new_users] == i[current_users]:
-        print("L'username {i[n]}")
+current_users : list[str] = [i.lower() for i in current_users]
+new_users : list[str] = [i.lower() for i in new_users]
+username_comuni : list[str] = []
+username_ok : list[str] = []
+for i in current_users:
+    if i in new_users:
+        username_comuni.append(i)
+    else:
+        username_ok.append(i)
+print(f"l'username {username_comuni} esiste gia")
+print(f"l'username {username_ok} è disponibile")
+
+#5-11. Ordinal Numbers: Ordinal numbers indicate their position in a list, such as 1st 
+#or 2nd. Most ordinal numbers end in th, except 1, 2, and 3.
+#• Store the numbers 1 through 9 in a list.
+#• Loop through the list.
+#• Use an if-elif-else chain inside the loop to print the proper ordinal ending for 
+#each number. Your output should read "1st 2nd 3rd 4th 5th 6th 7th 8th 9th", and 
+#each result should be on a separate line.
+        
+numbers : list[int] = [1,2,3,4,5,6,7,8,9]
+
+for i in numbers:
+    if i == 1:
+        print(f"{i} is the first")
+    elif i == 2:
+        print(f"{i} is the second")
+    elif i == 3:
+        print(f"{i} is the 3th")
+    elif i == 4:
+        print(f"{i} is the 4th")
+    elif i == 5:
+        print(f"{i} is the 5th")
+    elif i == 6:
+        print(f"{i} is the 6th")
+    elif i == 7:
+        print(f"{i} is the 7th")
+    elif i == 8:
+        print(f"{i} is the 8th")
+    elif i == 9:
+        print(f"{i} is the 9th")
+        
+
+    
+    
+            
+
+     
+
+
 
 
 
