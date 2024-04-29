@@ -87,6 +87,74 @@ print(make_album("Gazzelle","Punk", None))
 #allows users to enter an album’s artist and title. Once you have that information, call 
 #make_album() with the user’s input and print the dictionary that’s created. Be sure to 
 #include a quit value in the while loop.
+def make_album(artist: str, title: str, songs :None)->dict:
+    album  = {artist: {title: songs}}
+    return album
 
-while 
+while True:
+     artist = input("inserisci l'artista o 'x' per uscire:")
+     if artist == 'x':
+        break
+     title = input("inserisci il titolo dell'album o 'x' per uscire:")
+     if title == 'x':
+        break
+     print(make_album(artist,title,None))
+
+ 
+ 
+#8-9. Messages: Make a list containing a series of short text messages. Pass the list to a 
+#function called show_messages(), which prints each text message.
+
+list1 : list = ["ciao","marco","messaggio"]
+def show_messages(lista: list)->list:
+    for i in lista:
+        print(i)
+show_messages(list1)
+
+#8-10. Sending Messages: Start with a copy of your program from Exercise 8-9. Write a 
+#function called send_messages() that prints each text message and moves each message 
+#to a new list called sent_messages as it’s printed. After calling the function, print 
+#both of your lists to make sure the messages were moved correctly.
+
+list1 : list = ["ciao","marco","messaggio"]
+def show_messages(lista: list)->list:
+    sent_messages : list = []
+    for i in lista:
+        print(i)
+        sent_messages.append(i)
+    print(list1,sent_messages)
+
+show_messages(list1)
+
+
+#8-12. Sandwiches: Write a function that accepts a list of items a person wants on a sandwich. 
+#The function should have one parameter that collects as many items as the function call 
+#provides, and it should print a summary of the sandwich that’s being ordered. Call the 
+#function three times, using a different number of arguments each time.
+
+
+def items_sandwiches(list : str):
+    print("nel sandwiches abbiamo")
+    for i in list:
+        print(i)
+items_sandwiches(["cipolla","insalata","pomodoro"])
+items_sandwiches(["bacon","cheese","bbq"])
+items_sandwiches(["mayo","ketchup","cetriolo"])
+
+
+#8-13. User Profile:  Build a profile of yourself by calling build_profile(), using your first 
+#and last names and three other key-value pairs that describe you. All the values must be 
+#passed to the function as parameters. The function then must return a string such 
+#as "Eric Crow, age 45, hair brown, weight 67"
+
+build_profile : dict =  {"FirstName" : "Marco","LastName" : "Di Cicco","Age" : "23","HairColor" : "Brown","Weight" : "69"}
+
+def profile(diz : dict)->str:
+    for key in diz:
+        print(f"{key},{diz.get()}")
+profile(build_profile)
+
+        
+profile(build_profile)
+
 
