@@ -1,13 +1,12 @@
 class Animal:
-    def __init__(self, name: str, species: str, age: int, height: float, width: float, preferred_habitat: str, health : float):
+    def __init__(self, name: str, species: str, age: int, height: float, width: float, preferred_habitat: str,):
         self.name : str = name
         self.species : str = species
         self.age : str = age
         self.height : float = height
         self.width : float = width
         self.preferred_habitat : str = preferred_habitat
-        self.health : float = health
-        health : float = 100*(1/age)
+        self.health : float = 100*(1/age)
         
 
     

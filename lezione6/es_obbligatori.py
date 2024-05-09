@@ -16,10 +16,10 @@ of customers who’ve been served. Call this method with any number you like tha
 represent how many customers were served in, say, a day of business."""
 
 class Restaurant:
-    def __init__(self, restaurant_name: str, cuisine_type: str):
+    def __init__(self, restaurant_name: str, cuisine_type: str, number : int):
         self.restaurant_name : str = restaurant_name
         self.cuisine_type : str = cuisine_type
-        self.number : int = 0
+        self.number : int = number
 
     def describe_restaurant(self) -> str:
         print(f"Il ristorante {self.restaurant_name} serve {self.cuisine_type}")
@@ -29,16 +29,17 @@ class Restaurant:
 
     def number_served(self, served: int)->int:
         self.number = served
+        print(f"serviti : {self.number}")
         
 
     def increment_number_served(self, increment: int)->int:
         self.number += increment
-        print(f"serviti a fine serata {increment}")
+        print(f"serviti a fine serata {self.number}")
     
-ristorante = Restaurant("Da Gigi","Cucina romana")
-ristorante1 = Restaurant("ristorante messicano", "cucina messicana")
-ristorante2 = Restaurant("ristorante giapponese", "cucina giapponese")
-ristorante3 = Restaurant("ristorante thailandese","cucina thailandese")
+ristorante = Restaurant("Da Gigi","Cucina romana", 70)
+ristorante1 = Restaurant("ristorante messicano", "cucina messicana",13)
+ristorante2 = Restaurant("ristorante giapponese", "cucina giapponese",40)
+ristorante3 = Restaurant("ristorante thailandese","cucina thailandese",32)
 
 """print("nome del ristorante",ristorante.restaurant_name)
 print("tipo di cucina", ristorante.cuisine_type)"""
@@ -52,8 +53,6 @@ ristorante2.open_restaurant()
 ristorante3.open_restaurant()
 
 ristorante.number_served(20)
-print("clienti serviti", ristorante.number_served)
-
 
 ristorante.increment_number_served(5)
 
