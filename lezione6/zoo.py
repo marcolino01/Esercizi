@@ -27,7 +27,7 @@ class ZooKeepers:
         self.id : int = id
     
     def add_animal(self, animals: Animal, fence: Fence):
-        if self.preferred_
+        if Animal.preferred_habitat == 
         
         
         
