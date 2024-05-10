@@ -68,8 +68,8 @@ def filtra_mappa(prodotti : dict[str:float])  ->dict[str: float]:
 
 
 
-#scrvi una funzione che ruota gli elementi di una lista verso sinistra di un numero specificicato di k posizioni. la rotazione verso sinistra 
-#significa che ciascun elemento viene spostato a sinistra di una posizione e l'elemento iniziale va a finire all'ultima .
+#scrivi una funzione che ruota gli elementi di una lista verso sinistra di un numero specificicato di k posizioni. la rotazione verso sinistra 
+#significa che ciascun elemento viene spostato a sinistra di una posizione e l'elemento iniziale va a finire all'ultima.
 
 def rotate_left(elements : list[int], k : int) -> list[int]:
 
@@ -79,7 +79,7 @@ def rotate_left(elements : list[int], k : int) -> list[int]:
         k  = k % n
     
     rotated = elements[k:] + elements[:k] 
-    
+
     return rotated
 
 
