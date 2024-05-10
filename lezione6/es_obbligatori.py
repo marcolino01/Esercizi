@@ -133,7 +133,7 @@ class IceCreamStand:
         for flavor in self.flavors:
             print(flavor)
     
-gelateria : str = IceCreamStand("Gelateria","artigianale")
+gelateria  = IceCreamStand("Gelateria","artigianale")
 
 gelateria.icecream_flavors("Fragola")
 gelateria
