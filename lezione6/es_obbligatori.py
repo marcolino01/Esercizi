@@ -140,3 +140,90 @@ gelateria.icecream_flavors("Fragola")
 gelateria.icecream_flavors("Cioccolato")
 print(gelateria.icecream_flavors("menta"))
 gelateria.display_flavors()
+
+
+
+
+#9-7. Admin: An administrator is a special kind of user. Write a class called Admin that
+#inherits from the User class you wrote in Exercise 9-3 or Exercise 9-5. Add an attribute, 
+#privileges, that stores a list of strings like "can add post", "can delete post", "can 
+#ban user", and so on. Write a method called show_privileges() that lists the administrator’s 
+#set of privileges. Create an instance of Admin, and call your method. 
+#9-8. Privileges: Write a separate Privileges class. The class should have one attribute, 
+#privileges, that stores a list of strings as described in Exercise 9-7. 
+#Move the show_privileges() method to this class. Make a Privileges instance as an 
+#attribute in the Admin class. Create a new instance of Admin and use your method to 
+#show its privileges.
+class Privileges:
+    def __init__(self):
+        self.privileges : list[str] = ["can add post", "can delete post", "can ban user"]
+
+    def show_privileges(self):
+        print("This are the admin's privileges:")
+        for i in self.privileges:
+            print(f"-{i}")
+
+
+class Admin(User):
+    def __init__(self, first_name: str,
+                last_name: str,
+                age: str,
+                city: str):
+        super().__init__(first_name, last_name, age, city)
+        self.privileges = Privileges()
+
+
+
+
+admin : Admin = Admin("Marco","Di Cicco", 52, "Ladispoli")
+admin.privileges.show_privileges()
+
+
+#9-13. Dice: Make a class Die with one attribute called sides, which has a default value 
+#of 6. Write a method called roll_die() that prints a random number between 1 and the 
+#number of sides the die has. Make a 6-sided die and roll it 10 times. Make a 10-sided 
+#die and a 20-sided die. Roll each die 10 times.
+import random
+class Die:
+    def __init__(self, die : int ):
+        self.die : int = die
+
+    def roll_die(self) ->int:
+        for _ in range(9):
+            print(random.randint(1, self.die))
+
+
+dado : Die = Die(6)
+dado1 : Die = Die(10)
+dado2 : Die = Die(20)
+print(dado.roll_die())
+print(dado1.roll_die())
+print(dado2.roll_die())
+
+
+class Lottery:
+
+    def __init__(self):
+        self.number = [1,2,3,4,5,6,7]
+        self.letter = ["A","B","C","D","E"]
+        self.winning = random.sample(self.number + self.letter,4)
+
+    def play(self):
+        mylottery = random.sample(self.number + self.letter,4)
+        print(f"questo è il mio biglietto : {mylottery}")
+        if mylottery == self.winning:
+            print("Congratulazioni hai vinto")
+            return True
+        else:
+            print("Mi dispiace hai perso")
+            return False
+
+lotteria = Lottery()
+
+lotteria.play()
+count = 0
+while not lotteria.play():
+    count += 1
+
+print(count)
+    
