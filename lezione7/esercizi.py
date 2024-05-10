@@ -53,6 +53,39 @@ print(update_contact(contact, "Mario Rossi", telefono=123456789))
 
 
 
+def filtra_mappa(prodotti : dict[str:float])  ->dict[str: float]:
+    scontati : dict[str: float]= {}
+    
+    for prodotto, prezzo in prodotti.items:
+        if prezzo > 20.0:
+            prezzo = prezzo * 0.9
+            scontati[prodotto] = prezzo
+    
+    return scontati
+
+
+
+
+
+
+#scrvi una funzione che ruota gli elementi di una lista verso sinistra di un numero specificicato di k posizioni. la rotazione verso sinistra 
+#significa che ciascun elemento viene spostato a sinistra di una posizione e l'elemento iniziale va a finire all'ultima .
+
+def rotate_left(elements : list[int], k : int) -> list[int]:
+
+    n : int = len(elements)
+
+    if k > n: 
+        k  = k % n
+    
+    rotated = elements[k:] + elements[:k] 
+    
+    return rotated
+
+
+
+ 
+
 
 
 
