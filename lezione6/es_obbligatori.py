@@ -128,6 +128,7 @@ class IceCreamStand:
 
     def icecream_flavors(self,flavor : str) -> list[str]:
         self.flavors.append(flavor)
+        return self.flavors
 
     def display_flavors(self)->str:
         for flavor in self.flavors:
@@ -136,4 +137,6 @@ class IceCreamStand:
 gelateria  = IceCreamStand("Gelateria","artigianale")
 
 gelateria.icecream_flavors("Fragola")
-gelateria
+gelateria.icecream_flavors("Cioccolato")
+print(gelateria.icecream_flavors("menta"))
+gelateria.display_flavors()
