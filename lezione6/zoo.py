@@ -55,7 +55,19 @@ class ZooKeepers:
 
         if self.new_areaanimal <= Fence.area:
             Animal.health = self.new_health
-            
+        
+        return Animal.health
+        
+    
+    
+    def clean(self,fence: Fence):
+        self.area_residua = Fence.area - Animal.area_animal
+        self.time : float = Animal.area_animal / self.area_residua
+        
+        if self.time == 0:
+            self.time = Animal.area_animal
+
+        return self.time
         
 
 
