@@ -7,7 +7,7 @@ class Animal:
                 preferred_habitat: str,):
         self.name : str = name
         self.species : str = species
-        self.age : str = age
+        self.age : int = age
         self.height : float = height
         self.width : float = width
         self.preferred_habitat : str = preferred_habitat
@@ -55,7 +55,7 @@ class ZooKeepers:
             print("Sorry the animal doesn't like this habitat")
             
 
-    def remove_animal(self, animal: Animal, fence: list[Fence]):
+    def remove_animal(self, animal: Animal, fence: Fence):
         fence.list_animal.remove(animal)
         fence.area +=  animal.area_animal
 
@@ -78,7 +78,7 @@ class ZooKeepers:
     def clean(self,fence: Fence):
         self.area_animal = Animal(self.area_animal)
         self.area_residua = fence.area
-        self.time : float = sum(self.area_animal) / self.area_residua
+        self.time : float = self.area_animal/ self.area_residua
         
         if self.time == 0:
             self.time = self.area_animal
@@ -108,13 +108,6 @@ class Zoo:
         print("\nAnimals:")
         for animal in self.animals:
             print(animal.__str__())
-
-keeper = ZooKeepers(name="John", surname="Doe", id=1)
-fence = Fence(area=1000, temperature=25, habitat="Savana")
-lion = Animal(name="Leone", species="Panthera leo", age=5, height=2, width=3, preferred_habitat="Savana")
-zoo = Zoo(zookeepers=[keeper], fence=[fence], animals=[])
-keeper.add_animal(lion, fence)
-zoo.describe_zoo()
 
         
     
