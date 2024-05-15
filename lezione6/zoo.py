@@ -29,7 +29,7 @@ class Fence:
         self.area : float = area
         self.temperature : float = temperature
         self.habitat : str = habitat
-        self.list_animal : list[str] = []
+        self.list_animal : list[Animal] = []
 
     def __str__(self) -> str:
         return f"Fence(area= {self.area}, temperature={self.temperature}, habitat={self.habitat})"
@@ -59,7 +59,7 @@ class ZooKeepers:
         fence.list_animal.remove(animal)
         fence.area +=  animal.area_animal
 
-    def feed(self, animal: Animal):
+    def feed(self, animal: Animal, fence : Fence = None):
         if animal.health < 100:
             self.new_width : Animal = round(animal.width * (1 + 2/100),2)
             self.new_height : Animal = round(animal.height * (1 + 2/100),2)
