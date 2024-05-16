@@ -44,7 +44,7 @@ class ZooKeepers:
         self.surname : str = surname
         self.id : int = id
     
-    def add_animal(self, animals: Animal, fence: Fence):
+    def add_animal(self, animals: Animal, fence: Fence = None):
         if animals.preferred_habitat == fence.habitat:
             if animals.area_animal <= fence.area:
                 fence.list_animal.append(animals)
