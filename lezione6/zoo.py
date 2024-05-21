@@ -13,8 +13,20 @@ class Animal:
         self.preferred_habitat : str = preferred_habitat
         self.health : float = round(100 * (1 / age), 3)
         self.area_animal : float = height * width 
-        self.list_animal : list[str] = []
+        self.fence : Fence = None
 
+    def area(self):
+        return self.height * self.width
+
+    def become_bigger(self, factor : float = 0.02):
+        self.height = self.height * factor
+        self.width = self.width * factor
+        return self.height, self.width
+    
+    def become_healtier(self, factor: float = 0.01):
+        self.health = min(self.health + self.health * factor, 100)
+
+        
     def __str__(self) -> str:
         return f"Animal: (name = {self.name},species = {self.species}, age = {self.age})"
         
@@ -29,7 +41,31 @@ class Fence:
         self.area : float = area
         self.temperature : float = temperature
         self.habitat : str = habitat
-        self.list_animal : list[Animal] = []
+        self.animals : list[Animal] = []
+
+
+
+    def same_habitat(self, animal: Animal):
+        return animal.preferred_habitat == self.habitat
+    
+    def enough_space(self, animal_area: float):
+        return animal_area <= self.area
+    
+    def update_area(self, new_animal_area: float, old_animal_area: float):
+        self.area += old_animal_area
+        self.area -= new_animal_area
+    
+    def add_animal(self, animal: Animal):
+        if self.same_habitat(animal) and self.enough_space(animal) and animal not in self.animals:
+            self.animals.append(animal)
+            animal.fence = self
+        
+    def remove_animal(self, animal: Animal):
+        if animal in self.animals:
+            self.animals.remove(animal)
+            self.area +=  animal.area()
+            animal.fence = None
+
 
     def __str__(self) -> str:
         return f"Fence(area= {self.area}, temperature={self.temperature}, habitat={self.habitat})"
@@ -39,49 +75,40 @@ class Fence:
 class ZooKeepers:
     def __init__(self, name: str, 
                  surname: str, 
-                 id: int, ):
+                 id: str):
         self.name : str = name
         self.surname : str = surname
-        self.id : int = id
+        self.id : str = id
+
+
+    def add_animal(self,animal: Animal, fence: Fence):
+        fence.add_animal(animal)
+
+
+    def remove_animal(self, animal: Animal, fence : Fence):
+        fence.remove_animal(animal)
     
-    def add_animal(self, animals: Animal, fence: Fence = None):
-        if animals.preferred_habitat == fence.habitat:
-            if animals.area_animal <= fence.area:
-                fence.list_animal.append(animals)
-                fence.area -= animals.area_animal
-            else:
-                print("The fence is full")
-        else:
-            print("Sorry the animal doesn't like this habitat")
+    
+    def feed(self, animal: Animal):
+        fence: Fence = animal.fence
+        if fence:
             
-
-    def remove_animal(self, animal: Animal, fence: Fence):
-        fence.list_animal.remove(animal)
-        fence.area +=  animal.area_animal
-
-    def feed(self, animal: Animal, fence : Fence = None):
-        if animal.health < 100:
-            self.new_width : Animal = round(animal.width * (1 + 2/100),2)
-            self.new_height : Animal = round(animal.height * (1 + 2/100),2)
-            self.new_areaanimal = round(self.new_height * self.new_width)
-            self.new_health = round(animal.health * (1 + 1/100),2)
-            self.area_fence = fence.area
-            if self.new_areaanimal <= self.area_fence:
-                animal.health = self.new_health
-                animal.width = self.new_width
-                animal.height = self.new_height
-                fence.area -= self.new_areaanimal
-        return animal.health
+            new_height, new_widht = animal.become_bigger
+            if fence.enough_space((new_height * new_height) - animal.area()):
+               fence.area += animal.area()
+               animal.height = new_height
+               animal.width = new_widht
+               fence.area += animal.area()
+               animal.become_healtier()
         
     
     
     def clean(self,fence: Fence):
-        self.area_animal = Animal(self.area_animal)
-        self.area_residua = fence.area
-        self.time : float = self.area_animal/ self.area_residua
+        occupate_area : float = 0
+        for animal in fence.animals:
+            occupate_area += animal.area()
         
-        if self.time == 0:
-            self.time = self.area_animal
+        
 
         return self.time
         
@@ -91,10 +118,11 @@ class ZooKeepers:
 
 
 class Zoo:
-    def __init__(self, zookeepers: list[ZooKeepers] =[], fence: list[Fence] = [], animals : list[Animal] = []):
+    def __init__(self, zookeepers, fence):
         self.zookepers : list[ZooKeepers] = zookeepers
         self.fence : list[Fence] = fence
-        self.animals : list[Animal] = animals
+        self.animals : list[Animal]
+        
 
     def describe_zoo(self):
         print("Guardians:")
