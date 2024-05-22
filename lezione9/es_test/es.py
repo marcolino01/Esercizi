@@ -1,3 +1,81 @@
+"""Scrivere il frammento di codice che cambi il valore intero memorizzato nella variabile x nel seguente modo:
+- se x è pari, deve essere diviso per 2;
+- se x è dispari deve essere moltiplicato per 3 e gli deve essere sottratto 1."""
+"""x : int = int(input("inserisci un numero:"))
+if x % 2 == 0 :
+    x = x / 2
+else:
+    x = x * 3 + 1
+print(x)"""
+
+"""Sviluppare una funzione in Python per calcolare lo stipendio lordo di ciascuno dei diversi impiegati. 
+L'azienda paga 10 dollari all'ora per le prime 40 ore di lavoro e paga "una volta e mezza" la paga 
+oraria per tutte le ore di lavoro oltre le 40 ore.
+ 
+Per ogni operaio, viene fornito il numero di ore che tale impiegato ha lavorato durante la settimana.
+La vostra funzione deve ricevere questa informazione per ogni impiegato e determinare e stampare lo 
+stipendio lordo."""
+
+from cmath import sqrt
+import math
+
+
+ore_lavorate = 41
+paga = ore_lavorate * 10
+if ore_lavorate <= 40:
+    paga = paga
+else:
+    ore_inpiu = ore_lavorate - 40
+    straordinario = ore_inpiu * 15
+    paga += straordinario
+
+
+"""Scrivere in Python dei cicli che stampino le seguenti sequenze di valori:
+a) 1, 2, 3, 4, 5, 6, 7
+b) 3, 8, 13, 18, 23
+c) 20, 14, 8, 2, -4, -10
+d) 19, 27, 35, 43, 51"""
+
+
+"""for i in range (1,8):
+    print(i)
+for i in range (3, 24, 5):
+    print(i)
+for i in range (20, -11, -6):
+    print(i)
+for i in range (19, 52, 8):
+    print(i)"""
+
+"""Scrivere una funzione chiamata integerPower che, dati in input una base e un esponente, 
+restituisca il risultato della potenza base^exponent. Supporre che base sia un numero intero e 
+che l'esponente sia un valore intero positivo e diverso da 0.
+ 
+La funzione deve usare un ciclo come struttura di controllo per il calcolo del risultato.
+Non utilizzare nessuna funzione della libreria math!"""
+def integerPower(x: int, y: int) -> int:
+    z = 1
+    while y != 0:
+        z *= x
+        y -=1
+    return z
+
+print(integerPower(3,4))
+
+
+"""Definire una funzione chiamata hypotenuse che calcoli la lunghezza dell'ipotenusa di un 
+triangolo rettangolo. La funzione deve ricevere due argomenti di tipo float 
+(corrispondenti ai due lati del triangolo) e restituire l'ipotenusa come un float."""
+
+def hypotenuse(lato1: float, lato2: float):
+    ipo = ((lato1*lato1) + (lato2*lato2))** 0.5
+    return ipo
+
+print(hypotenuse(3,4))
+
+
+
+
+
 """Scrivi una funzione che rimuove tutti i duplicati da una lista, contenente sia numeri che lettere, mantenendo l'ordine originale degli elementi."""
 def remove_duplicates(lista1: list) -> list:
     lista : list = []
@@ -130,15 +208,17 @@ def memorizza_file(files: list[int]) -> None:
 
     for file in files:
         new_file : float = file/100 * 80
-        n = new_file // 512
+        n = round(new_file / 512)
         if n < spazio_totale_blocchi:
             spazio_totale_blocchi -= n
             print(f"File di 1100 {file} compresso in {new_file} byte e memorizzato. Blocchi usati: {n}. Blocchi rimanenti: {spazio_totale_blocchi}.")
         else:
             print(f"Non è possibile memorizzare il file di {file}. Spazio insufficiente.")
+        break
 
 memorizza_file([1100, 20000, 1048576, 512, 5000])
 
+memorizza_file([1100])
 
     
 
