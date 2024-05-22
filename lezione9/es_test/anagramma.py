@@ -19,3 +19,23 @@ def anagram(s: str, t: str) -> bool:
         return True
             
 print(anagram("roma","amor"))
+
+
+"""s = list(s.lower())
+t = list(t.lower())
+return sorted(s) == sorted(t)"""
+
+
+"""if len(s) == len(t)
+        char_s: dict[str, int] = {s[i]: 0 for i in range (len(s))}
+        for elem in s:
+            char_s[elem] +=1
+            
+        for elem in t:
+            if elem in char_s.keys()
+                char_s[elem] -=1
+            else:
+                return False
+        return sum(list(char_s.values())) == 0
+    else:
+        return False"""
