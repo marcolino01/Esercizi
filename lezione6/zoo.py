@@ -129,11 +129,11 @@ class Zoo:
         for guardian in self.zookepers:
             print(guardian.__str__())
         
-        print("\nFences:")
+        print("Fences:")
         for fence in self.fence:
             print(fence.__str__())
 
-        print("\nAnimals:")
+        print("Animals:")
         for animal in self.animals:
             print(animal.__str__())
 
