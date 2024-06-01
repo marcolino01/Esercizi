@@ -14,7 +14,7 @@ Metodi:
 
 """
 
-class Film:
+class Film:                                               #inizializzazione classe film
 
     def __init__(self, titolo: str, durata: float) -> None:
         self.titolo : str = titolo
@@ -28,12 +28,15 @@ class Film:
 
 
 class Sala:
-    def __init__(self, num_sala: int, film: Film, tot_posti: int, pre_posti: int) -> None:
+    def __init__(self, num_sala: int, film: Film, tot_posti: int, pre_posti: int) -> None:  
         self.num_sala : int = num_sala
         self.film : Film = film
         self.tot_posti : int = tot_posti
         self.pre_posti: int  = pre_posti
-        
+
+    
+    #creazione classa sala in cui ci sono due funzione che permettono di prenotare il posto e di vedere 
+    #quanti posti liberi ci sono in sala    
         
     def prenota_posti(self, posti: int):
         self.posti : int = posti
@@ -48,12 +51,12 @@ class Sala:
         self.posti_liberi : int = self.tot_posti - self.pre_posti
         print(f"i posti liberi sono {self.posti_liberi}")
 
-
+#classe cinema in cui passo i valori di tipo sala 
 class Cinema(Sala):
     def __init__(self) -> None:
         self.liste_sale: list[Sala] = []
         
-
+#funzione aggiungi sala e prenota film
     def aggiuingi_sala(self, sala : Sala):
         self.sala : Sala = sala
         if sala not in self.liste_sale:
@@ -133,6 +136,22 @@ class Store:
         self.name : str = name 
         if name == self.product.name:
             return self.product.name
+        return f"non abbiamo il prodotto che cerchi : {self.name}"
         
-    def verify()
+    def verify(self,name: str):
+        self.name : str = name
+        if name == self.product.name:
+            if self.product.quantity > 0:
+                return self.product.name,self.product.quantity
+            return "ci dispiace ma abbiamo terminato i pezzi"
+        return f"non abbiamo il prodotto che cerchi : {self.name}"
+        
+product1 : Product = Product("viti", 0)
+store1 : Store = Store()
+store1.add_products(product1)
+print(store1.search_product("viti"))
+print(store1.search_product("bulloni"))
+print(store1.verify("viti"))
+print(store1.verify("bulloni"))
+        
         
