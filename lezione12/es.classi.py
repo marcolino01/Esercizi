@@ -34,28 +34,23 @@ class Biblioteca:
         return self.list_book
     
     def presta_libro(self, titolo: str):
-        self.titolo : str = titolo
-        self.borrowed_book : list[Libro] = []
-        for book in self.list_book:
-            if titolo == book.title:
-                if book.borrowed == False:
-                    book.borrowed = True
-                    self.borrowed_book.append(book)
+        for i in self.list_book:
+            if titolo == i.title:
+                if i.borrowed != True:
+                    i.borrowed = True
                     return f"il libro {titolo} è disponibile"
                 else:
                     return f"il libro {titolo} è stato già prestato"
-        return f"il libro {titolo} non è disponibile"
-        
-    def restituisci_libro(self, titolo: str):
-        self.titolo : str = titolo
-        for book in self.borrowed_book:
+            return f"il libro {titolo} non è disponibile"
+            
+    def restituisci_libro(self, titolo: str):   
+        for book in self.list_book:
             if titolo == book.title:
-                if book.borrowed :
+                if book.borrowed == True:
                     book.borrowed = False
                     return f"il libro {titolo} è stato restituito correttamente"
-                else:
-                    return f"il libro {titolo} non è stato prestato"
-        return f"il libro {titolo} non è disponibile"
+            return f"il libro {titolo} non è stato prestato"
+       
         
     def mostra_disponibili(self):
         self.lista_disponibili : list[str] = []
@@ -76,9 +71,8 @@ biblioteca1.aggiungi_libro(libro1)
 biblioteca1.aggiungi_libro(libro2)
 biblioteca1.aggiungi_libro(libro3)
 print(biblioteca1.presta_libro("io uccido"))
-print(biblioteca1.presta_libro("io uccido"))
 print(biblioteca1.restituisci_libro("io uccido"))
-print(biblioteca1.mostra_disponibili())
+#print(biblioteca1.mostra_disponibili())
 
 
 """Sviluppa un sistema in Python per la gestione di un catalogo film che permetta di aggiungere, 
@@ -142,7 +136,7 @@ class MovieCatalog():
     
     def search_movies_by_title(self, title:str ):
         self.title : str = title
-        for director, movie in self.moviedict.items():
+        for director in self.moviedict.keys():
             for movie in self.moviedict.values():
                 if title in movie:
                     return movie
