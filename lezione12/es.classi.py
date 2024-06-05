@@ -158,3 +158,20 @@ print(catalog)
 print(catalog.get_movies_by_director("Christopher Nolan"))
 
 print(catalog.search_movies_by_title("Bill"))
+
+
+def fibonacci(i: int):
+    a : int = 1
+    b : int = 1
+
+    for _ in range(i):
+        c = a + b
+        a = b
+        b = c
+    return b
+
+import time
+a = time.time()
+
+print(fibonacci(52))
+print(f"tempo impiegato : {time.time()- a}")
