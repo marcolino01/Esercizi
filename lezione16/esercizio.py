@@ -205,10 +205,11 @@ class RecipeManager:
         self.name : str = name
         self.ingredients : list[str] = ingredients
 
-        if name in self.dizrecipe.keys():
+        if name  not in self.dizrecipe.keys():
             self.dizrecipe[name] = ingredients
+            return name, ingredients
         else : 
-            print("errore")
+            return "errore la recitta esiste gia"
 
     def add_ingredient(self,recipe_name: str, ingredient: str):
         if recipe_name in self.dizrecipe.keys():
@@ -236,10 +237,47 @@ class RecipeManager:
                 self.ingredients.remove(old_ingredient)
                 self.ingredients.append(new_ingredient)
                 return self.dizrecipe[recipe_name]
+            else:
+                return "l'ingrediente indicato non c'è"
+        else:
+            return "Errore non abbiamo questa ricetta"
+        
+    def list_recipes(self):
+        self.list_recipe : list[str] = []
+        for k in self.dizrecipe.keys():
+            if k not in self.list_recipe:
+                self.list_recipe.append(k)
+            return self.list_recipe
+
+    def list_ingredients(self, recipe_name: str):
+        if recipe_name in self.dizrecipe.keys():
+            return self.dizrecipe[recipe_name]
+        else:
+            return " Errore la ricetta non esiste"
+        
+    def search_recipe_by_ingredient(self, ingredient: str):
+        self.search_recipe : list[str] = []
+        for recipe in self.dizrecipe.keys():
+            if ingredient in self.dizrecipe[recipe]:
+                self.search_recipe.append(recipe)
+        
+        if self.search_recipe:
+            return self.search_recipe
+        else:
+            return "non abbaimo questo ingrediente"
+        
+manager = RecipeManager()
+print(manager.create_recipe("Pizza Margherita", ["Farina", "Acqua", "Lievito", "Pomodoro", "Mozzarella"]))
+print(manager.add_ingredient("Pizza Margherita", "Basilico"))
+print(manager.update_ingredient("Pizza Margherita", "Mozzarella", "Mozzarella di Bufala"))
+print(manager.remove_ingredient("Pizza Margherita", "Acqua"))
+print(manager.list_ingredients("Pizza Margherita"))
+
             
 
 
-    
+
+
 
             
         
