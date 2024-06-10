@@ -215,7 +215,7 @@ class RecipeManager:
         if recipe_name in self.dizrecipe.keys():
             if ingredient not in self.dizrecipe[recipe_name]:
                 self.ingredients.append(ingredient)
-                return self.dizrecipe[recipe_name]
+                return f"{recipe_name} : {self.dizrecipe[recipe_name]}"
             else:
                 print("l'ingrediente gia c'è")
         else:
@@ -422,7 +422,7 @@ class Specie:
         return anni
 
     
-    def anni_per_superare(self, altra_specie: str):
+    def anni_per_superare(self, altra_specie: "Specie"):
         anni : int = 0
         while self.popolazione <= altra_specie.popolazione  and anni < 1000:
             self.cresci()
