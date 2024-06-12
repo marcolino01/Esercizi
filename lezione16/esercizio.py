@@ -202,30 +202,25 @@ class RecipeManager:
         self.dizrecipe : dict[str,list[str]] = {}
 
     def create_recipe(self, name: str, ingredients: list[str]):
-        self.name : str = name
-        self.ingredients : list[str] = ingredients
 
         if name  not in self.dizrecipe.keys():
             self.dizrecipe[name] = ingredients
-            return name, ingredients
+            return self.dizrecipe
         else : 
             return "errore la recitta esiste gia"
 
     def add_ingredient(self,recipe_name: str, ingredient: str):
-        if recipe_name in self.dizrecipe.keys():
             if ingredient not in self.dizrecipe[recipe_name]:
-                self.ingredients.append(ingredient)
-                return f"{{'{recipe_name} : {self.dizrecipe[recipe_name]}}}"
+                self.dizrecipe[recipe_name].append(ingredient)
+                return self.dizrecipe
             else:
                 print("l'ingrediente gia c'è")
-        else:
-            print("la ricetta non esiste")
 
     def remove_ingredient(self, recipe_name: str, ingredient: str):
         if recipe_name in self.dizrecipe.keys():
             if ingredient in self.dizrecipe[recipe_name]:
-                self.ingredients.remove(ingredient)
-                return f"{{'{recipe_name}' : {self.dizrecipe[recipe_name]}}}"
+                self.dizrecipe[recipe_name].remove(ingredient)
+                return self.dizrecipe
             else: 
                 print("non c'è questo ingrediente")
         else:
@@ -234,37 +229,34 @@ class RecipeManager:
     def update_ingredient(self,recipe_name: str, old_ingredient: str, new_ingredient: str):
         if recipe_name in self.dizrecipe.keys():
             if old_ingredient in self.dizrecipe[recipe_name]:
-                self.ingredients.append(new_ingredient)
-                self.ingredients.remove(old_ingredient)
-                return f"{{'{recipe_name}' : {self.dizrecipe[recipe_name]}}}"
+                self.dizrecipe[recipe_name].insert(-1,new_ingredient)
+                self.dizrecipe[recipe_name].remove(old_ingredient)
+                return self.dizrecipe
             else:
                 return "l'ingrediente indicato non c'è"
         else:
             return "Errore non abbiamo questa ricetta"
         
     def list_recipes(self):
-        self.list_recipe : list[str] = []
+        list_recipe : list[str] = []
         for k in self.dizrecipe.keys():
-            if k not in self.list_recipe:
-                self.list_recipe.append(k)
-            return self.list_recipe
+            if k not in list_recipe:
+                list_recipe.append(k)
+            return list_recipe
 
     def list_ingredients(self, recipe_name: str):
         if recipe_name in self.dizrecipe.keys():
-            return f"{{'{recipe_name}' : {self.dizrecipe[recipe_name]}}}"
+            return self.dizrecipe[recipe_name]
         else:
             return " Errore la ricetta non esiste"
         
     def search_recipe_by_ingredient(self, ingredient: str):
-        self.search_recipe : list[str] = []
-        for recipe in self.dizrecipe.keys():
-            if ingredient in self.dizrecipe[recipe]:
-                self.search_recipe.append(recipe)
+        search_recipe = {}
+        for recipe, ingredients in self.dizrecipe.items():
+            if ingredient in ingredients:
+                search_recipe[recipe] = ingredient
         
-        if self.search_recipe:
-            return f"{{'{self.search_recipe}' : {self.dizrecipe[recipe]}}}"
-        else:
-            return "non abbaimo questo ingrediente"
+            return search_recipe
         
 manager = RecipeManager()
 print(manager.create_recipe("Pizza Margherita", ["Farina", "Acqua", "Lievito", "Pomodoro", "Mozzarella"]))
@@ -410,13 +402,15 @@ class Specie:
         self.tasso_crescita : float = tasso_crescita
 
     def cresci(self):
-        formula_popo : float = self.popolazione * (1 + self.tasso_crescita / 100)
-        return formula_popo
+        self.popolazione = int(self.popolazione * (1 + self.tasso_crescita / 100))
+        return self.popolazione
+        
+        
     
     def getDensita(self, area_kmq: float):
-        formula : float = self.popolazione / area_kmq
+        #formula : float = self.popolazione / area_kmq
         anni : int = 0
-        while formula < 1:
+        while self.popolazione / area_kmq < 1:
             self.cresci()
             anni += 1
         return anni
