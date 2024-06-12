@@ -215,7 +215,7 @@ class RecipeManager:
         if recipe_name in self.dizrecipe.keys():
             if ingredient not in self.dizrecipe[recipe_name]:
                 self.ingredients.append(ingredient)
-                return f"{recipe_name} : {self.dizrecipe[recipe_name]}"
+                return f"{{'{recipe_name} : {self.dizrecipe[recipe_name]}}}"
             else:
                 print("l'ingrediente gia c'è")
         else:
@@ -225,7 +225,7 @@ class RecipeManager:
         if recipe_name in self.dizrecipe.keys():
             if ingredient in self.dizrecipe[recipe_name]:
                 self.ingredients.remove(ingredient)
-                return self.dizrecipe[recipe_name]
+                return f"{{'{recipe_name}' : {self.dizrecipe[recipe_name]}}}"
             else: 
                 print("non c'è questo ingrediente")
         else:
@@ -234,9 +234,9 @@ class RecipeManager:
     def update_ingredient(self,recipe_name: str, old_ingredient: str, new_ingredient: str):
         if recipe_name in self.dizrecipe.keys():
             if old_ingredient in self.dizrecipe[recipe_name]:
-                self.ingredients.remove(old_ingredient)
                 self.ingredients.append(new_ingredient)
-                return self.dizrecipe[recipe_name]
+                self.ingredients.remove(old_ingredient)
+                return f"{{'{recipe_name}' : {self.dizrecipe[recipe_name]}}}"
             else:
                 return "l'ingrediente indicato non c'è"
         else:
@@ -251,7 +251,7 @@ class RecipeManager:
 
     def list_ingredients(self, recipe_name: str):
         if recipe_name in self.dizrecipe.keys():
-            return self.dizrecipe[recipe_name]
+            return f"{{'{recipe_name}' : {self.dizrecipe[recipe_name]}}}"
         else:
             return " Errore la ricetta non esiste"
         
@@ -262,7 +262,7 @@ class RecipeManager:
                 self.search_recipe.append(recipe)
         
         if self.search_recipe:
-            return self.search_recipe
+            return f"{{'{self.search_recipe}' : {self.dizrecipe[recipe]}}}"
         else:
             return "non abbaimo questo ingrediente"
         
@@ -410,13 +410,13 @@ class Specie:
         self.tasso_crescita : float = tasso_crescita
 
     def cresci(self):
-        self.formula_popo : float = self.popolazione * (1 + self.tasso_crescita / 100)
-        return self.formula
+        formula_popo : float = self.popolazione * (1 + self.tasso_crescita / 100)
+        return formula_popo
     
     def getDensita(self, area_kmq: float):
-        self.formula : float = self.popolazione / area_kmq
+        formula : float = self.popolazione / area_kmq
         anni : int = 0
-        while self.formula < 1:
+        while formula < 1:
             self.cresci()
             anni += 1
         return anni
@@ -444,6 +444,14 @@ class Elefante(Specie):
 # Creazione delle istanze delle specie
 bufalo_klingon = BufaloKlingon(100, 15)  # Crea un'istanza di BufaloKlingon con popolazione 100 e tasso di crescita 15%
 elefante = Elefante(10, 35)  # Crea un'istanza di Elefante con popolazione 10 e tasso di crescita 35%
+
+# Calcolo degli anni necessari per superare
+anni_necessari = elefante.anni_per_superare(bufalo_klingon)  # Calcola gli anni necessari affinché gli elefanti superino i bufali Klingon
+print(f"Anni necessari perché la popolazione di elefanti superi quella dei bufali Klingon: {anni_necessari}")
+
+# Calcolo della densità di popolazione per i Bufali Klingon
+anni_densita = bufalo_klingon.getDensita(1500)  # Calcola gli anni necessari per raggiungere una densità di 1 bufalo Klingon per km²
+print(f"Anni necessari per raggiungere una densità di 1 Bufalo Klingon per km quadrato: {anni_densita}")
 
 
     
