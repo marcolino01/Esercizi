@@ -39,7 +39,9 @@ class Dottore(Persona):
         print(self.greet())
         print(f"Sono medico {self.getSpecialization()}")
 
-doc = Dottore("ddd","ccc","www", 444)
+doc = Dottore("ddd","ccc","www", 44.4)
 doc.setAge(31)
 doc.doctorGreet()
 doc.isAValidDoctor()
+doc.setParcel(23)
+print(doc.getParcel())
