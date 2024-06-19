@@ -3,11 +3,11 @@ from dottore import Dottore
 
 class Fattura:
 
-    def init (self, patient: list[Paziente], doctor: Dottore):
+    def __init__ (self, patient: list[Paziente], doctor: Dottore):
  
         
         if doctor.isAValidDoctor():
-            self.patient : list[Paziente] = []
+            self.patient : list[Paziente] = patient
             self.fatture : int = len(patient)
             self.salary : int = 0
             self.doctor : Dottore = doctor
@@ -55,5 +55,12 @@ class Fattura:
         else:
             pass
 
+paziente : Paziente = Paziente("Mario", "Rossi", "fghj")
+paziente2 : Paziente = Paziente("Marco", "Rossi", "jjjj")
+dottore : Dottore = Dottore("gino", "Gino","Chirurgia", 77.7)
+dottore.setAge(45)
+pazienti : list[Paziente]= [paziente, paziente2]
+fattura : Fattura = Fattura(pazienti, dottore)
+        
 
 
