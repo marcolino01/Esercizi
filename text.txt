@@ -1,0 +1,26 @@
+1 persona
+    1.1 nome
+    1.2 cognome
+    1.3 codice fiscale
+    1.4 data di nascita
+    1-persone possono essere impiegati , studenti(gli studenti non sono mai impiegati, ma le persone possono anche essere nessuno dei due)
+2 uomini
+    -dati persona
+    -posizione militare
+3 donne
+    -dati di persona
+    -numero di maternita
+4 impiegati
+    -stipendio
+    -ruolo {segretario dottore progettista}
+5 progettista
+    -puo essere responsabile di un progetto
+6 responsabile progetto 
+    -storico progetti
+7 progetti 
+    nome
+8 studenti
+    -matricola
+
+
+
