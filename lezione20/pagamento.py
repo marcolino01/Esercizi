@@ -35,8 +35,29 @@ class PagamentoContanti(Pagamento):
                 if round(importo,2) > k:
                     importo -= k
                     self.pezzi[k] = 1 + v
-        for v in self.pezzi.values():
-            if v > 0:
+                    break
+        ###for k,v in self.pezzi.items():
+            #if v > 0:
+                #if k >= 5:
+                #    print(f"{self.pezzi[k]} banconota da")
+                #else:
+
+class PagamentoCarteCredito(Pagamento):
+    
+    def __init__(self, nome_titolare: str, data_di_scadenza: int, numero_carta: int ):
+        super().__init__()
+        self.nome_titolare : str = nome_titolare
+        self.data_di_scadenza : int = data_di_scadenza
+        self.numero_carta : int = numero_carta
+
+    def dettagliPagamento(self):
+        
+        print(f"Pagamento di: €{self.getPagamento()}\n"
+               f"Nome sulla carta: {self.nome_titolare}\n"
+               f"Data di scadenza: {self.data_di_scadenza}\n"
+               f"Numero di carta: {self.numero_carta}")
+                
+                
 
 
 
