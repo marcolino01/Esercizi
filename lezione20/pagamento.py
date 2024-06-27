@@ -1,13 +1,31 @@
 from abc import abstractmethod, ABC
+import time
+
+def get_time(func):
+    
+    def wrapper(*args):
+
+        start = time.time()
+
+        func(*args)
+
+        end = time.time()
+        elapsed_time = end - start
+        print(f"{elapsed_time}")
+
+    return wrapper
+
 class Pagamento(ABC):
 
     def __init__(self):
         pass
 
+    @get_time
     def setPagamento(self, importo: float):
         self.__importo = round(importo, 2)
         return self.__importo
     
+    @get_time
     def getPagamento(self):
         return self.__importo
     
@@ -16,6 +34,7 @@ class Pagamento(ABC):
         pass
     
 
+
 class PagamentoContanti(Pagamento):
 
     def __init__(self):
@@ -23,6 +42,8 @@ class PagamentoContanti(Pagamento):
 
     def dettagliPagamento(self):
         print(f"Pagamento in contanti di: {self.getPagamento()}") 
+
+    
 
     def inPezziDa(self):
         
