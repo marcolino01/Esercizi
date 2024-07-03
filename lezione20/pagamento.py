@@ -41,7 +41,7 @@ class PagamentoContanti(Pagamento):
         super().__init__()
 
     def dettagliPagamento(self):
-        print(f"Pagamento in contanti di: {self.getPagamento()}") 
+        return print(f"Pagamento in contanti di: {self.getPagamento()}") 
 
     
 
@@ -55,7 +55,7 @@ class PagamentoContanti(Pagamento):
         while importo != 0:
             for k,v in self.pezzi.items():
                 if round(importo,2) >= k:
-                    importo = round(importo-k,2)
+                    importo : float = round(importo-k,2)
                     self.pezzi[k] = 1 + v
                     break
 

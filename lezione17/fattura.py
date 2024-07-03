@@ -1,5 +1,5 @@
 from paziente import Paziente
-from dottore import Dottore
+from lezione17.dottore import Dottore
 
 class Fattura:
 
