@@ -73,5 +73,7 @@ if __name__ == "__main__":
     plt.plot(cases, MergeSort_times, label = 'Merge')
     plt.show(cases, BubbleSort_times, label = 'Bubble')
 
+print("Ciuao")
+
 
 
