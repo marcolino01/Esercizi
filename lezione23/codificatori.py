@@ -44,10 +44,15 @@ class CifratoreACombinazione(CodificatoreMessagio, DecodificatoreMessaggio):
         self.n : int = n
 
     def codifica(self, testoInChiaro: str) -> str:
-        a : int = int(len(testoInChiaro)//2)
-        
-
+        i = 0
+        combinazione : str = ""
         while i == self.n:
+            a : int = int(len(testoInChiaro)/2)
+            stringa1 = testoInChiaro[0 : a]
+            stringa2 = testoInChiaro[a -1 : -1]
+            for i in stringa1, stringa2:
+                combinazione = zip()
+
             
 
 
