@@ -92,3 +92,13 @@ def rotate_left(elements : list[int], k : int) -> list[int]:
 
 #Scrivi una funzione che elimini dalla lista dati certi elementi specificati in un dizionario. Il dizionario contiene elementi da 
 #rimuovere come chiavi e il numero di volte che devono essere rimossi come valori.
+
+
+def rimuovi_elementi(lista: list[int], da_rimuovere: dict[int : int])->list[int]:
+    
+    for k,v in da_rimuovere.items():
+        if k in lista:
+            for _ in range(v): 
+                lista.remove(k)
+    return lista
+
