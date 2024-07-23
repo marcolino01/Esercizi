@@ -46,7 +46,12 @@ class VoloCommerciale(Volo):
                 else:
                     return f"Siamo spiacenti la {classe_servizio} non esiste "
         else:
-            return(f"Siamo spiacenti il volo {self.codiceVolo} è al completo")          
+            return(f"Siamo spiacenti il volo {self.codiceVolo} è al completo")    
+
+class VoloCharter(Volo):
+    def __init__(self, codiceVolo: str, capacità: int, prenotazioni: int = 0) -> None:
+        super().__init__(codiceVolo, capacità, prenotazioni)
+        
 
 
         
